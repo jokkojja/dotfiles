@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
-config = wezterm.config_builder()
+local config = wezterm.config_builder()
+local background_image_path = wezterm.config_dir .. "/peakpx.jpg"
 
 config = {
 	automatically_reload_config = true,
@@ -8,12 +9,12 @@ config = {
 	window_decorations = "RESIZE",
 	font = wezterm.font("JetBrains Mono", { weight = "ExtraBold" }),
 	line_height = 1.1,
-	harfbuzz_features = { "calt=1", "clig=1", "liga=1" }, -- включить лигатуры
+	harfbuzz_features = { "calt=1", "clig=1", "liga=1" },
 	font_size = 17,
 	background = {
 		{
 			source = {
-				File = "/Users/frolovkirill/peakpx.jpg",
+				File = background_image_path,
 			},
 			hsb = {
 				hue = 1,
@@ -34,13 +35,11 @@ config = {
 }
 
 config.keys = {
-	-- Cmd+Enter → переключить текущее окно в полноэкранный режим
 	{
 		key = "Enter",
 		mods = "CMD",
 		action = wezterm.action.ToggleFullScreen,
 	},
-	-- Ctrl+D → закрыть текущий терминал/панель
 	{
 		key = "d",
 		mods = "CTRL",
